@@ -1,7 +1,14 @@
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
+import { createStore, applyMiddleware } from 'redux';
+import {Provider} from 'react-redux';
+import ReduxThunk from 'redux-thunk'
+import reducer from './reducer';
 import AppNavigator from './navigation/AppNavigator';
+
+
+const stor = createStore(reducer, applyMiddleware(ReduxThunk));
 
 export default class App extends React.Component {
   constructor(props) {
@@ -28,10 +35,12 @@ export default class App extends React.Component {
       );
     } else {
       return (
-        <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator />
-        </View>
+        <Provider store={stor}>
+          <View style={styles.container}>
+            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+            <AppNavigator />
+          </View>
+        </Provider>
       );
     }
   }
