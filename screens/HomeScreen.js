@@ -11,6 +11,7 @@ import {
   KeyboardAvoidingView
 } from 'react-native';
 import MyButtonHandler from '../components/MyButtonHandler';
+import API from '../api';
 
 
 export default class HomeScreen extends React.Component {
@@ -30,7 +31,8 @@ export default class HomeScreen extends React.Component {
   }
 
   handleRegisterPress() {
-    console.log(this.state.login, this.state.password, "Click")
+    console.log(this.state.login, this.state.password, "Click");
+    API.addUser({username: this.state.login, password: this.state.password}).then(res => console.log(res));
   }
 
   render() {
@@ -52,7 +54,7 @@ export default class HomeScreen extends React.Component {
               onChangeText={this.handleOnChangePsswd}
             />
           </View>
-          <MyButtonHandler handleOnPress={this.handleRegisterPress}>Test</MyButtonHandler>
+          <MyButtonHandler handleOnPress={this.handleRegisterPress}>Register</MyButtonHandler>
         </View>
 
       </KeyboardAvoidingView>

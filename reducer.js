@@ -1,3 +1,5 @@
+import API from './api';
+
 export const GET_USERS = 'GET_USERS';
 export const GET_USERS_FAIL = 'GET_USERS_FAIL';
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
@@ -49,5 +51,40 @@ export function fetchusersSuccess (payload) {
   return {
     type: GET_USERS_SUCCESS,
     payload
+  }
+}
+
+export function fetchUser () {
+  return {
+    type: GET_USER
+  }
+}
+
+export function fetchUserFaild () {
+  return {
+    type: GET_USER_FAIL
+  }
+}
+
+export function fetchUserSuccess (payload) {
+  return {
+    type: GET_USER_SUCCESS,
+    payload
+  }
+}
+
+export function getUser(id) {
+  return (dispatch) => {
+      dispatch(fetchUser());
+      API.getUser(id)
+        .then(res => dispatch(fetchUserSuccess(res)))
+        .catch(err => dispatch(fetchUserFaild()));
+  }
+}
+
+export function getUsers () {
+  return (dispatch) => {
+    dispatch(fetchUsers());
+    API
   }
 }

@@ -29,7 +29,7 @@ class UserListScreen extends PureComponent {
   }
 
   handleOnDefetePress(id) {
-    fetch.
+    fetch("http://")
   }
 }
 
