@@ -18,8 +18,12 @@ export default class Api {
   }
   static addUser(data) {
     return new Promise((resolve, reject) => {
+      console.log(data);
       fetch(`${this.URL}/add`, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
         mode: 'no-cors',
         body: JSON.stringify(data)
       })

@@ -49,8 +49,8 @@ class UserHolder extends PureComponent {
 
 UserHolder.propTypes = {
   handleOnPressEdit: PropTypes.func.isRequired,
-  handleOnPressDelete: PropTypes.func.isRequired,
-  id: PropTypes.onOfType([PropTypes.string, PropTypes.number])
+  handleOnPressDelete: PropTypes.func,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 UserHolder.defaultProps = {

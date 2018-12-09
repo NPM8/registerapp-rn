@@ -34,6 +34,7 @@ export default class App extends React.Component {
           />
       );
     } else {
+      console.log(stor);
       return (
         <Provider store={stor}>
           <View style={styles.container}>

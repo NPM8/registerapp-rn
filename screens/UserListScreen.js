@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import UserHolder from '../components/UserHolder';
@@ -11,15 +11,31 @@ class UserListScreen extends PureComponent {
       data: []
     }
     this.handleOnPressEdit = this.handleOnPressEdit.bind(this);
+    this.handleOnDefetePress = this.handleOnDefetePress.bind(this);
+  }
+
+  componentDidMount () {
+    const {}
   }
 
   render() {
-    return (
-      <FlatList
-        data={this.state.date}
-        renderItem={(item) => <UserHolder handleOnPressEdit={this.handleOnPressEdit} handleOnPressDelete={}/>}
-      />
-    );
+    const {users, loadingUsers} = this.props;
+    if (loadingUsers) {
+     return  (<View style={{
+        flex: 1,
+        flexDirection: "column",
+        justifyContent: "center"
+      }}>
+      <Text style={{textAlign: "center"}}>Loading...</Text>
+    </View>);
+    }else {
+      return (
+        <FlatList
+          data={users}
+          renderItem={(item) => <UserHolder handleOnPressEdit={this.handleOnPressEdit} handleOnPressDelete={this.handleOnDefetePress}/>}
+        />
+      );
+    }
   }
 
   handleOnPressEdit(id) {
@@ -36,9 +52,12 @@ class UserListScreen extends PureComponent {
 UserListScreen.propTypes = {};
 
 function mapStateToProps(state){
+  console.log(state);
+  const users = state.users.map(value => ({ ...value, key: value.id}));
   return {
-    posts: state.posts
+    users: state.users,
+    loadingUsers: state.loadingUsers,
   }
 }
 
-export default connect(UserListScreen)(UserListScreen);
+export default connect(mapStateToProps)(UserListScreen);

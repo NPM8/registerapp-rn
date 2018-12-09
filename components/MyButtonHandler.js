@@ -1,6 +1,6 @@
 import React, { PureComponent as Component } from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, Text, ViewPropTypes, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   button: {
@@ -36,8 +36,8 @@ class MyButtonHandler extends Component {
 }
 
 MyButtonHandler.propTypes = {
-  textStyle: ViewPropTypes.style,
-  buttonStyle: ViewPropTypes.style,
+  textStyle: Text.propTypes.style,
+  buttonStyle: TouchableOpacity.propTypes.style,
   handleOnPress: PropTypes.func.isRequired
 };
 

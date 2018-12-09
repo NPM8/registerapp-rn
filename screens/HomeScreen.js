@@ -32,7 +32,15 @@ export default class HomeScreen extends React.Component {
 
   handleRegisterPress() {
     console.log(this.state.login, this.state.password, "Click");
-    API.addUser({username: this.state.login, password: this.state.password}).then(res => console.log(res));
+    API.addUser({username: this.state.login, password: this.state.password}).then(res => {
+      switch (res.msg) {
+        case "OK":
+          this.props.navigation.navigate("userList");
+          break;
+        default:
+          console.log("Response: ", res)
+      }
+    });
   }
 
   render() {
@@ -46,11 +54,14 @@ export default class HomeScreen extends React.Component {
             <TextInput
               style={styles.inputLogin}
               placeholder="Login"
+              textContentType="username"
               onChangeText={this.handleOnChangeLogin}
             />
             <TextInput
               style={styles.inputLogin}
               placeholder="Password"
+              textContentType="password"
+              secureTextEntry={true}
               onChangeText={this.handleOnChangePsswd}
             />
           </View>

@@ -9,7 +9,9 @@ export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 
 const initialState = {
   users: [],
-  user: {}
+  user: {},
+  loadingUsers: true,
+  loadingUser: true,
 };
 
 export default function reducer(state = initialState, action) {
@@ -32,6 +34,8 @@ export default function reducer(state = initialState, action) {
     case GET_USER_SUCCESS:
       return {...state, loadingUsers: false, users: action.payload};
       break;
+    default:
+      return {...state};
   }
 }
 
