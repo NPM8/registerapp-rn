@@ -31,7 +31,7 @@ export default function reducer(state = initialState, action) {
     case GET_USERS_FAIL:
       return {...state, loadingUsers: true, loadingError: 'Error getting users'};
       break;
-    case GET_USER_SUCCESS:
+    case GET_USERS_SUCCESS:
       return {...state, loadingUsers: false, users: action.payload};
       break;
     default:
@@ -89,6 +89,12 @@ export function getUser(id) {
 export function getUsers () {
   return (dispatch) => {
     dispatch(fetchUsers());
-    API
+    API.getUsers()
+      .then(res => {
+        const respons = res.map(value => ({key: value.id , id: value.id, username: value.username, password: value.password, img: 'default'}));
+        dispatch(fetchusersSuccess(respons));
+      })
+      .catch(err => fetchUsersFaild());
+    }
   }
-}
+

@@ -38,7 +38,8 @@ export default class HomeScreen extends React.Component {
           this.props.navigation.navigate("userList");
           break;
         default:
-          console.log("Response: ", res)
+          // console.log("Response: ", res)
+          Alert.alert('Error', res.msg);
       }
     });
   }

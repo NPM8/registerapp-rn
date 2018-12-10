@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   text: {
-    color: '#fff',
+    color: '#000',
     fontSize: 18,
     alignSelf: 'center',
     textAlign: 'center'
@@ -36,8 +36,8 @@ class MyButtonHandler extends Component {
 }
 
 MyButtonHandler.propTypes = {
-  textStyle: Text.propTypes.style,
-  buttonStyle: TouchableOpacity.propTypes.style,
+  textStyle: PropTypes.object,
+  buttonStyle: PropTypes.object,
   handleOnPress: PropTypes.func.isRequired
 };
 
