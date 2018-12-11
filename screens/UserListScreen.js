@@ -6,9 +6,19 @@ import PropTypes from 'prop-types';
 import UserHolder from '../components/UserHolder';
 import Loading from '../components/LoadingComp';
 import Api from '../api';
+import Colors from '../constants/Colors';
 
 class UserListScreen extends PureComponent {
-  static navi
+  static navigationOptions = {
+    title: "admin page",
+    headerStyle: {
+      backgroundColor: Colors.mainColor
+    },
+    headerTitleStyle: {
+      color: "#fff"
+    }
+  };
+
   constructor(props) {
     super(props);
     this.handleOnPressEdit = this.handleOnPressEdit.bind(this);
@@ -34,9 +44,6 @@ class UserListScreen extends PureComponent {
       return (
         <FlatList
           data={users}
-          style={{
-            backgroundColor: "#d3ffb5"
-          }}
           renderItem={(item) => { return (<UserHolder handleOnPressEdit={this.handleOnPressEdit} key={item.item.key} userObj={item.item} id={item.item.id} handleOnPressDelete={this.handleOnDefetePress}> {item.item.key}: {item.item.username} {item.item.password} </UserHolder>) } }
         />
       );

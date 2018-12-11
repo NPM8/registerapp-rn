@@ -5,8 +5,18 @@ import Loading from '../components/LoadingComp';
 import UserInfo from '../components/UserInfo';
 import { View, StyleSheet, } from 'react-native';
 import { getUser } from '../reducer';
+import Colors from '../constants/Colors';
 
 class UserDetail extends Component {
+  static navigationOptions = {
+    title: "edit user",
+    headerStyle: {
+      backgroundColor: Colors.mainColor
+    },
+    headerTitleStyle: {
+      color: "#fff"
+    }
+  };
 
   constructor (props) {
     super(props);

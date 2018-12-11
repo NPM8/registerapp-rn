@@ -8,6 +8,6 @@ const AppNavigator = createStackNavigator({
   home: { screen: HomeScreen },
   userList: { screen: UserList},
   userDetails: { screen: UserDetail}
-}, {initialRouteName: 'userList'});
+});
 
 export default AppNavigator;

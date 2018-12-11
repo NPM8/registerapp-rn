@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Alert,
   Image,
   Platform,
   ScrollView,
@@ -10,6 +11,7 @@ import {
   TextInput,
   KeyboardAvoidingView
 } from 'react-native';
+import Colors from '../constants/Colors';
 import MyButtonHandler from '../components/MyButtonHandler';
 import API from '../api';
 
@@ -17,6 +19,10 @@ import API from '../api';
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
+    headerStyle: "#009587",
+    headerTitleStyle: {
+      color: "#fff"
+    }
   };
 
   constructor(props) {
@@ -39,7 +45,10 @@ export default class HomeScreen extends React.Component {
           break;
         default:
           // console.log("Response: ", res)
-          Alert.alert('Error', res.msg);
+          Alert.alert('Error', res.msg, [
+            {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+            {text: 'OK', onPress: () => console.log('OK Pressed')},
+          ]);
       }
     });
   }
@@ -62,7 +71,6 @@ export default class HomeScreen extends React.Component {
               style={styles.inputLogin}
               placeholder="Password"
               textContentType="password"
-              secureTextEntry={true}
               onChangeText={this.handleOnChangePsswd}
             />
           </View>
@@ -90,7 +98,7 @@ const styles = StyleSheet.create({
   },
   titleMain: {
       flex: 1,
-      backgroundColor: '#009587',
+      backgroundColor: Colors.mainColor,
       flexDirection: 'column',
       justifyContent: 'center'
     },
@@ -112,8 +120,8 @@ const styles = StyleSheet.create({
       width: 250,
       height: 50,
       fontSize: 18,
-      color: '#565656',
-      borderBottomColor: '#858585',
+      color: Colors.mainColor,
+      borderBottomColor: Colors.mainColor,
     borderBottomWidth: 2,
     padding: 10,
     alignSelf: 'center'

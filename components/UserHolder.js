@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Avatar } from 'react-native-elements';
 import MyButtonHandler from './MyButtonHandler';
 import PropTypes from 'prop-types';
+import Colors from '../constants/Colors';
 
 const styles = StyleSheet.create({
   main: {
@@ -32,7 +33,12 @@ class UserHolder extends PureComponent {
           <Avatar
             rounded
             size="medium"
-            icon={{name: 'user', type: 'font-awesome'}}
+            icon={{name: 'user', type: 'font-awesome', color: Colors.mainColor}}
+            containerStyle={{
+              backgroundColor: "#fff",
+              borderWidth: 1,
+              borderColor: Colors.mainColor
+            }}
           />
         </View>
         <View style={{flex: 1, justifyContent: 'center', flexDirection: 'column'}}>
